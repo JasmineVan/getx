@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 class LoginPageController extends GetxController{
 
+  final RxString myText = RxString('');
   final textEditingController1 = TextEditingController();
   final textEditingController2 = TextEditingController();
 
@@ -15,5 +16,8 @@ class LoginPageController extends GetxController{
           'Welcome!');
     }
   }
+   void myTextOnChange(newText){
+    myText.value = newText;
 
+  }
 }

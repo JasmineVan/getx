@@ -17,28 +17,37 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: controller.textEditingController1,
-              decoration: const InputDecoration(
-                labelText: 'Username',
-              ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Obx(() => Text(controller.myText.value, style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40,
+                  color: Colors.redAccent
+              )),)
+            ],
+          ),
+          TextField(
+            onChanged: (newText) => controller.myTextOnChange(newText),
+            controller: controller.textEditingController1,
+            decoration: const InputDecoration(
+              labelText: 'Username',
             ),
-            TextField(
-              controller: controller.textEditingController2,
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Password',
-              ),
+          ),
+          TextField(
+            controller: controller.textEditingController2,
+            obscureText: true,
+            decoration: const InputDecoration(
+              labelText: 'Password',
             ),
-            ElevatedButton(child: const Text('Login'),
-                onPressed: () => controller.verify()
-            ),
-          ],
-        ),
+          ),
+          ElevatedButton(child: const Text('Login'),
+              onPressed: () => controller.verify()
+          ),
+        ],
       ),
     );
   }
